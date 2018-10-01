@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6ABCB198-3369-4737-A4FD-6321A5F4E9C0}"
+	ProjectSection(SolutionItems) = preProject
+		BeerStore.html = BeerStore.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "folder1", "folder1", "{CC8DDBF4-6626-4540-80F1-F7D6FC29DFC9}"
+	ProjectSection(SolutionItems) = preProject
+		BeerStore.html = BeerStore.html
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC8DDBF4-6626-4540-80F1-F7D6FC29DFC9} = {6ABCB198-3369-4737-A4FD-6321A5F4E9C0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E1B7D7E-FC96-455E-A858-0118A492B8DE}
+	EndGlobalSection
+EndGlobal
