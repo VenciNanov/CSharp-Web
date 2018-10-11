@@ -35,8 +35,6 @@ namespace IRunes.Controllers
 
         public IHttpResponse PostLogin(IHttpRequest request)
         {
-
-
             var usernameOrEmail = request.FormData["username"].ToString();
             var password = request.FormData["password"].ToString();
 
@@ -62,7 +60,15 @@ namespace IRunes.Controllers
             var username = user.Username;
 
             var response = new RedirectResult("/Home/Index");
+            try
+            {
 
+            }
+            catch (Exception e)
+            {
+                return new BadRequestResult("Error!", HttpResponseStatusCode.BadRequest);
+                throw;
+            }
             this.SignInUser(username, request, response);
 
             return response;
@@ -85,6 +91,10 @@ namespace IRunes.Controllers
             var email = request.FormData["email"].ToString();
 
             //Validate
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(email))
+            {
+                return new BadRequestResult("Please fill all props", HttpResponseStatusCode.InternalServerError);
+            }
             if (string.IsNullOrWhiteSpace(userName) || userName.Length < 4)
             {
                 return new BadRequestResult("Please provide valid username with length of 4 or more characters.", HttpResponseStatusCode.Unauthorized);
@@ -122,19 +132,17 @@ namespace IRunes.Controllers
                 Password = hashedPassword,
                 Email = email
             };
-            this.Context.Users.Add(user);
 
             try
             {
+                this.Context.Users.Add(user);
                 this.Context.SaveChanges();
             }
             catch (Exception e)
             {
-                // TODO: Log error
                 return new BadRequestResult(e.Message, HttpResponseStatusCode.InternalServerError);
             }
 
-            // TODO: Login
             var response = new RedirectResult("/");
             this.SignInUser(userName, request, response);
             // Redirect

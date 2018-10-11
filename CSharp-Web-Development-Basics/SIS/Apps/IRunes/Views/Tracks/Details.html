@@ -1,9 +1,13 @@
-﻿<iframe width="853" height="480" src="{{VideoUrl}}" frameborder="0" encrypted-media" allowfullscreen></iframe>
-<br />
-<strong>Name: {{TrackName}}</strong>
-<br />
-<strong>Price: ${{TrackPrice}}</strong>
-<br />
-<hr />
-<a href="/Albums/Details?id={{albumId}}">Back to Album</a>
-<hr />
+﻿<div class="container w-50 container-botom-margin">
+    <div class="text-center">
+        <b>Track Name: {{TrackName}}</b><br />
+        <b>Track Price: ${{TrackPrice}}</b>
+        <hr class="my-2" />
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="{{VideoUrl}}"></iframe><br />
+        </div>
+        <hr class="my-2">
+        <a href="/Albums/Details?id={{albumId}}" class="btn btn-success">Back To Album</a>
+    </div>
+</div>
+S
