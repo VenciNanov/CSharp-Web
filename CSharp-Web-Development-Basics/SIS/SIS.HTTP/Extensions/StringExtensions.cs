@@ -1,16 +1,20 @@
-﻿using System;
-
-namespace SIS.HTTP.Extensions
+﻿namespace SIS.HTTP.Extensions
 {
     public static class StringExtensions
     {
-        public static string Capitalize(this string input)
+        public static string Capitalize(this string text)
         {
-            if (string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrEmpty(text))
             {
-                throw new ArgumentException($"{nameof(input)} cannot be null");
+                return text;
             }
-            return Char.ToUpper(input[0]) + input.Substring(1).ToLower();
+
+            if (text.Length == 1)
+            {
+                return text.ToUpper();
+            }
+
+            return char.ToUpper(text[0]) + text.Substring(1).ToLower();
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using SIS.HTTP.Enums;
+﻿using System;
+using SIS.HTTP.Enums;
 using SIS.WebServer;
 using SIS.WebServer.Routing;
-using System;
 
 namespace SIS.Demo
 {
@@ -9,12 +9,13 @@ namespace SIS.Demo
     {
         static void Main(string[] args)
         {
-            var serverRoutingTable = new ServerRoutingTable();
-            serverRoutingTable.Routes[HttpRequestMethod.GET]["/"] = request => new HomeController().Index();
+            ServerRoutingTable serverRoutingTable = new ServerRoutingTable();
 
-            Server server = new Server(80, serverRoutingTable);
+            serverRoutingTable.Routes[HttpRequestMethod.Get]["/"] = request => new HomeController().Index(request);
+
+            Server server = new Server(8000, serverRoutingTable);
+
             server.Run();
-
         }
     }
 }

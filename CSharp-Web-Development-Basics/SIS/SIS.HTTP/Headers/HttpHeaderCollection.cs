@@ -1,51 +1,38 @@
-﻿using SIS.HTTP.Headers.Contracts;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using SIS.HTTP.Common;
 
 namespace SIS.HTTP.Headers
 {
-    public class HttpHeaderCollection : IHttpHeadersCollection
+    public class HttpHeaderCollection : IHttpHeaderCollection
     {
-        private readonly IDictionary<string, HttpHeader> headers;
+        private readonly Dictionary<string, HttpHeader> headers;
 
         public HttpHeaderCollection()
         {
             this.headers = new Dictionary<string, HttpHeader>();
-        }
+        }   
+
         public void Add(HttpHeader header)
         {
-            if (header == null || string.IsNullOrEmpty(header.Key) || string.IsNullOrEmpty(header.Value) || this.ContainsHeader(header.Key))
-            {
-                throw new Exception();
-            }
+            CoreValidator.ThrowIfNull(header, nameof(header));
             this.headers.Add(header.Key, header);
         }
 
         public bool ContainsHeader(string key)
         {
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new ArgumentException($"{nameof(key)} cannot be null!");
-            }
+            CoreValidator.ThrowIfNull(key, nameof(key));
             return this.headers.ContainsKey(key);
         }
 
         public HttpHeader GetHeader(string key)
         {
-            if (string.IsNullOrEmpty(key))
-            {
-                throw new ArgumentException($"{nameof(key)} cannot be null!");
-            }
-            if (this.ContainsHeader(key))
-            {
-                return this.headers[key];
-            }
-            return null;
+            CoreValidator.ThrowIfNull(key, nameof(key));
+            return this.headers.GetValueOrDefault(key, null);
         }
 
         public override string ToString()
         {
-            return string.Join(Environment.NewLine, this.headers.Values);
+            return string.Join(GlobalConstants.HttpNewLine, this.headers.Values);
         }
     }
 }
