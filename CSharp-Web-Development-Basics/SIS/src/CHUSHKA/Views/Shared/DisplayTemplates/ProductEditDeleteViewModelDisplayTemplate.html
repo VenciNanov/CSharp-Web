@@ -1,0 +1,46 @@
+﻿<h1 class="text-center">Edit Product</h1>
+<hr class="hr-2 bg-dark" />
+<form class="mx-auto w-50" method="post" action="/Products/Edit?id=@Model.Id">
+    <input type="hidden" name="Id" value="@Mode.Id"/>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" value="@Model.Name" id="name" placeholder="Name..." name="Name">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" value="@Model.Price" step="0.01" min="0" class="form-control" id="price" placeholder="Price..." name="Price">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control"  id="description" name="Description" rows="4" placeholder="Description...">@Model.Description</textarea>
+    </div>
+    <h4 class="text-center">Product type</h4>
+    <hr class="hr-2  bg-dark"/>
+    <div class="row justify-content-around">
+
+        <div class="col-md-2">
+            <input id="type" type="radio" @Model.Food name="Type" value="Food"/>
+            <label for="typefood">Food</label>
+        </div>
+        <div class="col-md-2">
+            <input id="typedomestic" type="radio" @Model.Domestic name="Type" value="Domestic"/>
+            <label for="typedomestic">Domestic</label>
+        </div>
+        <div class="col-md-2">
+            <input id="typehealth" type="radio" @Model.Health name="Type" value="Health"/>
+            <label for="typehealth">Health</label>
+        </div>
+        <div class="col-md-2">
+            <input id="typecosmetic" type="radio" @Model.Cosmetic name="Type" value="Cosmetic"/>
+            <label for="typecosmetic">Cosmetic</label>
+        </div>
+        <div class="col-md-2">
+            <input id="typeother" type="radio" @Model.Other name="Type" value="Other"/>
+            <label for="typeother">Other</label>
+        </div>
+    </div>
+    <hr class="hr-2  bg-dark"/>
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn chushka-bg-color">Create</button>
+    </div>
+</form>
