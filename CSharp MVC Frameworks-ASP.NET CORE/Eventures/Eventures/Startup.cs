@@ -77,7 +77,8 @@ namespace Eventures
             app.UseDatabaseMigration();
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/Error");
+                //app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
             else

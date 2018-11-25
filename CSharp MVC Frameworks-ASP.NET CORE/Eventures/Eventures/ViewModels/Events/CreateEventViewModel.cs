@@ -11,6 +11,7 @@ namespace Eventures.ViewModels.Events
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Name")]
+        [MinLength(10)]
         public string Name { get; set; }
 
         [Required]
@@ -31,11 +32,13 @@ namespace Eventures.ViewModels.Events
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Total Tickets")]
+        [Range(1, int.MaxValue, ErrorMessage = "Should be a non-zero integer number.")]
         public int TotalTickets { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
         [Display(Name = "Price Per Ticket")]
+        [Range(typeof(decimal), "0", "79228162514264337593543950335")]
         public decimal PricePerTicket { get; set; }
     }
 }

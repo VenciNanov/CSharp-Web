@@ -11,6 +11,7 @@ namespace Eventures.ViewModels.Users
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Username")]
+        [MinLength(3)]
         public string Username { get; set; }
 
         [Required]
@@ -21,19 +22,21 @@ namespace Eventures.ViewModels.Users
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
+        [MinLength(5, ErrorMessage = "Password must be at least 5 symbols long.")]
         public string Password { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
+        [MinLength(5, ErrorMessage = "Password must be at least 5 symbols long.")]
+        [Compare("Password")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        
         [DataType(DataType.Text)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required]
         [DataType(DataType.Text)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
@@ -41,6 +44,7 @@ namespace Eventures.ViewModels.Users
         [Required]
         [DataType(DataType.Text)]
         [Display(Name = "UCN")]
+        [StringLength(maximumLength:10,MinimumLength = 10)]
         public string UniqueCitizenNumber { get; set; }
     }
 }
